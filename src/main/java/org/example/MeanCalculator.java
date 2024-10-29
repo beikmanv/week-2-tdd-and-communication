@@ -4,13 +4,17 @@ import java.util.Arrays;
 
 public class MeanCalculator {
 
-    public float calculateMean(int[] array){
+    public double calculateMean(int[] array){
 
-        int sumOfAllNumbers = Arrays.stream(array).sum();
+        if(array.length == 0) return 0;
 
-        return (float)sumOfAllNumbers/(float)array.length;
+        Arrays.sort(array);
+        if(array[0] == array[array.length-1]){
+            System.out.println("Running if statement for identical array");
+            return array[0];
+        }
 
-        //if they're all the same, mean = array[0].
-
+        long sumOfAllNumbers = Arrays.stream(array).sum();
+        return (double)sumOfAllNumbers/(double)array.length;
     }
 }

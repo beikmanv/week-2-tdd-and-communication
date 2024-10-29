@@ -16,13 +16,13 @@ class MeanCalculatorTest {
     @Test
     @DisplayName("Tests whether the MeanCalculator.calculateMean() method returns " +
             "the mean value from an input array of integers")
-    void testCalculateMean_returnsMeanValueFromInputArray() {
+    void testCalculateMean_inputNormalArray() {
         //Arrange
         int[] input = {1,2,3,4};
-        float expectedResult = 2.5f;
+        double expectedResult = 2.5f;
 
         //Act
-        float actualResult = meanCalculator.calculateMean(input);
+        double actualResult = meanCalculator.calculateMean(input);
 
         //Assert
         assertEquals(expectedResult, actualResult);
@@ -32,34 +32,85 @@ class MeanCalculatorTest {
     @Test
     @DisplayName("Tests whether the MeanCalculator.calculateMean() method returns " +
             "the mean value from an input array of integers")
-    void testCalculateMean_returnsMeanValueGivenNegativeNumbers() {
+    void testCalculateMean_inputNegativeNumbers() {
         //Arrange
         int[] input = {1,2,-3,4};
         float expectedResult = 1f;
 
         //Act
-        float actualResult = meanCalculator.calculateMean(input);
+        double actualResult = meanCalculator.calculateMean(input);
 
         //Assert
         assertEquals(expectedResult, actualResult);
 
     }
 
-//    @Test
-//    @DisplayName()
+    @Test
+    @DisplayName("Test mean calculator works with an array including Integer.MAX_VALUE")
+    public void testMeanCalculator_inputLargeInt(){
 
+        //arrange
+        int[] input = {1,2,3,500000000};
+        double expectedResult = 125000001.5;
 
-    //test with Integer.MAX_INT
+        //Act
+        double actualResult = meanCalculator.calculateMean(input);
+
+        //Assert
+        assertEquals(expectedResult,actualResult);
+
+    }
+
+    @Test
+    @DisplayName("Test mean calculator works with an array including Integer.MAX_VALUE")
+    public void testMeanCalculator_inputMaxInt(){
+
+        //arrange
+        int[] input = {Integer.MAX_VALUE, 1,2,3};
+        double expectedResult = 536870913.25;
+
+        //Act
+        double actualResult = meanCalculator.calculateMean(input);
+
+        //Assert
+        assertEquals(expectedResult,actualResult);
+
+    }
 
     //empty array
 
-    //invalid input
+
+    @Test
+    @DisplayName("Test mean calculator works with an empty array")
+    public void testMeanCalculator_inputEmptyArray(){
+
+        //arrange
+        int[] input = {};
+        double expectedResult = 0;
+
+        //Act
+        double actualResult = meanCalculator.calculateMean(input);
+
+        //Assert
+        assertEquals(expectedResult,actualResult);
+
+    }
 
     //all the numbers are the same
+    @Test
+    @DisplayName("Test mean calculator works if all numbers are the same")
+    public void testMeanCalculator_inputArrayWithSameNumbers(){
 
-    //string input? assert exception?
+        //arrange
+        int[] input = {2,2,2,2};
+        double expectedResult = 2;
 
+        //Act
+        double actualResult = meanCalculator.calculateMean(input);
 
+        //Assert
+        assertEquals(expectedResult,actualResult);
 
+    }
 
 }
