@@ -1,6 +1,14 @@
 package org.example;
 
 public class AsciiAdder {
+
+    public int sumAsciiCharacter(int intInput){
+
+        String string = String.valueOf(intInput);
+
+        return sumAsciiCharacters(string);
+    }
+
     public int sumAsciiCharacters(String string){
 
         //integer output = 0
@@ -13,7 +21,9 @@ public class AsciiAdder {
 
         for (int i = 0; i < string.length(); i++) {
             int asciiValue = (int) string.charAt(i);
-            output += asciiValue;
+            if(asciiValue <= 255){
+                output += asciiValue;
+            }
         }
 
         //return the output number
