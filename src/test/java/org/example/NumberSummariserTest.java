@@ -20,6 +20,7 @@ class NumberSummariserTest {
 
         // Assert
         assertEquals(expectedResult, actualResult);
+        assertEquals(1,1);
     }
 
 
